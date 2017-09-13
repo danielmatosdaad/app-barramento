@@ -90,12 +90,6 @@
 		</dependency>
 		<dependency>
 			<groupId>br.com.app.smart.business</groupId>
-			<artifactId>app-corporativo-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>br.com.app.smart.business</groupId>
 			<artifactId>
 				app-barramento-integracao-interfaces
 			</artifactId>
@@ -104,11 +98,6 @@
 		<dependency>
 			<groupId>br.com.app.smart.business</groupId>
 			<artifactId>app-barramento-integracao-delegate</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>br.com.app.smart.business</groupId>
-			<artifactId>app-servico-infra-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

@@ -48,20 +48,10 @@
 			<type>ejb</type>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>br.com.app.smart.business</groupId>
-			<artifactId>app-corporativo-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 			<dependency>
 				<groupId>br.com.app.smart.business</groupId>
 				<artifactId>app-barramento-api</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>br.com.app.smart.business</groupId>
-				<artifactId>app-corporativo-integracao</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
@@ -72,21 +62,11 @@
 			</dependency>
 			<dependency>
 				<groupId>br.com.app.smart.business</groupId>
-				<artifactId>app-servico-infra-integracao</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>br.com.app.smart.business</groupId>
 				<artifactId>
 					app-barramento-infra-persistencia
 				</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<type>ejb</type>
-			</dependency>
-			<dependency>
-				<groupId>br.com.app.smart.business</groupId>
-				<artifactId>app-servico-infra-api</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>br.com.app.smart.business</groupId>
@@ -99,6 +79,12 @@
 					app-monitoracao-servico-integracao
 				</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.app.smart.business</groupId>
+				<artifactId>app-barramento-controle-sessao</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>ejb</type>
 			</dependency>
 	</dependencies>
 

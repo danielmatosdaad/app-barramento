@@ -27,15 +27,5 @@
     	<artifactId>app-repositorio-servico-integracao</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
-    <dependency>
-    	<groupId>br.com.app.smart.business</groupId>
-    	<artifactId>app-corporativo-integracao</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-    	<groupId>br.com.app.smart.business</groupId>
-    	<artifactId>app-servico-infra-integracao</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 </project>

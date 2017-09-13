@@ -5,10 +5,8 @@ import java.util.Date;
 import java.util.Map;
 
 import br.app.barramento.controlesessao.interfaces.ISessao;
-import br.app.barramento.controlesessao.interfaces.ISessaoUsuario;
 import br.app.barramento.integracao.exception.InfraEstruturaException;
 import br.app.barramento.integracao.exception.NegocioException;
-import br.app.corporativo.integracao.dto.UsuarioDTO;
 import br.app.repositorio.servico.integracao.IRepositorio;
 
 public class SessaoDTO implements ISessao, Serializable {

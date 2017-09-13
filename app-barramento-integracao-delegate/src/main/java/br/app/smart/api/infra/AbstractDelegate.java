@@ -87,10 +87,6 @@ public abstract class AbstractDelegate<S> implements IServiceIntegracao<EnvioDTO
 			service.bustarPorID(envio.getRequisicao().getId());
 			resposta.setMensagem(Mensagem.SUCESSO);
 			break;
-		case BUSCAR_POR_INTERVALO:
-			service.bustarPorIntervaloID(envio.getRequisicoesNumericas());
-			resposta.setMensagem(Mensagem.SUCESSO);
-			break;
 		case EXCLUIR_POR_ID:
 			service.removerPorId(envio.getRequisicao().getId());
 			resposta.setMensagem(Mensagem.SUCESSO);

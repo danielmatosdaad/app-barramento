@@ -13,6 +13,7 @@ import br.app.barramento.integracao.dto.LocalizadorServico;
 
 public abstract class AbstractLocalizadorServico<S> implements LocalizadorServico<S> {
 
+	protected static final String HTTP_REMOTING_PREFIX = "http-remoting://";
 	private static final String JNDI_PROPERTIES = "jndi.properties";
 	protected String registroNomeLocal;
 	protected String registroNomeRemote;
@@ -77,7 +78,7 @@ public abstract class AbstractLocalizadorServico<S> implements LocalizadorServic
 			throw new RuntimeException(e);
 
 		}
-		
+
 	}
 
 	protected boolean isVazio(String valor) {
@@ -110,6 +111,18 @@ public abstract class AbstractLocalizadorServico<S> implements LocalizadorServic
 		return prop;
 	}
 
+	protected Properties criarPropriedades(String ip, String porta, String login, String senha) {
+		Properties prop = new Properties();
+		String providerURL = HTTP_REMOTING_PREFIX.concat(ip).concat(":").concat(porta);
+		prop.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
+		prop.put(Context.PROVIDER_URL, providerURL);
+		prop.put(Context.SECURITY_PRINCIPAL, login);
+		prop.put(Context.SECURITY_CREDENTIALS, senha);
+		prop.put("jboss.naming.client.ejb.context", false);
+
+		return prop;
+	}
+
 	protected Properties criarPropriedadesDefault() {
 		Properties prop = new Properties();
 
@@ -127,7 +140,7 @@ public abstract class AbstractLocalizadorServico<S> implements LocalizadorServic
 		String registroNome = "";
 		if (this.tipoLocalizacao.equals(TipoLocalizador.LOCAL)) {
 			registroNome = this.registroNomeLocal;
-			
+
 		} else {
 			registroNome = this.registroNomeRemote;
 		}

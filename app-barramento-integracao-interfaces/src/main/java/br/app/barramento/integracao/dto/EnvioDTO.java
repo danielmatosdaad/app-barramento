@@ -9,20 +9,37 @@ public class EnvioDTO implements DTO {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Class<?> tipo;
-	private DTO requisicao;
-	private List<DTO> requisicoes;
-	private int[] requisicoesNumericas;
+	private final String tokenAutenticacao;
+	private final String tokenAutorizacao;
+	private final String nomeIdentificadorAutenticacao;
+	private final String ip;
+	private final String porta;
+	private final String identificadorDispotivo;
+	private final String nomeRepositorio;
+	private final String nomeCatalogo;
+	private final String acao;
+	private final DTO requisicao;
+	private final List<DTO> requisicoes;
 	private String interfaces;
-	private String delegate;
-	private String reposta;
 	private String envio;
+	private String reposta;
+	private String delegate;
 
-	public EnvioDTO() {
-	}
+	public EnvioDTO(final String tokenAutenticacao,final String tokenAutorizacao,final String nomeIdentificadorAutenticacao, final String ip, final String porta,
+			final String identificadorDispotivo, final String nomeRepositorio, final String nomeCatalogo,
+			final String acao, final DTO requisicao, final List<DTO> requisicoes) {
 
-	public EnvioDTO(Object requisicao) {
-		this.requisicao = (DTO) requisicao;
+		this.tokenAutenticacao = tokenAutenticacao;
+		this.tokenAutorizacao = tokenAutorizacao;
+		this.nomeIdentificadorAutenticacao = nomeIdentificadorAutenticacao;
+		this.ip = ip;
+		this.porta = porta;
+		this.identificadorDispotivo = identificadorDispotivo;
+		this.nomeRepositorio = nomeRepositorio;
+		this.nomeCatalogo = nomeCatalogo;
+		this.acao = acao;
+		this.requisicao = requisicao;
+		this.requisicoes = requisicoes;
 		this.envio = requisicao.getClass().getName();
 
 	}
@@ -39,44 +56,21 @@ public class EnvioDTO implements DTO {
 
 	}
 
-	public Class<?> getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Class<?> tipo) {
-		this.tipo = tipo;
-	}
-
 	public DTO getRequisicao() {
 		return requisicao;
 	}
 
-	public void setRequisicao(DTO requisicao) {
-		this.requisicao = requisicao;
+
+	public List<DTO> getRequisicoes() {
+		return requisicoes;
 	}
 
-	public String getInterfaces() {
-		return interfaces;
+	public String getTokenAutenticacao() {
+		return tokenAutenticacao;
 	}
 
-	public void setInterfaces(String interfaces) {
-		this.interfaces = interfaces;
-	}
-
-	public String getDelegate() {
-		return delegate;
-	}
-
-	public void setDelegate(String delegate) {
-		this.delegate = delegate;
-	}
-
-	public String getReposta() {
-		return reposta;
-	}
-
-	public void setReposta(String reposta) {
-		this.reposta = reposta;
+	public String getTokenAutorizacao() {
+		return tokenAutorizacao;
 	}
 
 	public String getEnvio() {
@@ -87,20 +81,57 @@ public class EnvioDTO implements DTO {
 		this.envio = envio;
 	}
 
-	public List<DTO> getRequisicoes() {
-		return requisicoes;
+	public String getReposta() {
+		return reposta;
 	}
 
-	public void setRequisicoes(List<DTO> requisicoes) {
-		this.requisicoes = requisicoes;
+	public void setReposta(String reposta) {
+		this.reposta = reposta;
 	}
 
-	public int[] getRequisicoesNumericas() {
-		return requisicoesNumericas;
+	public String getDelegate() {
+		return delegate;
 	}
 
-	public void setRequisicoesNumericas(int[] requisicoesNumericas) {
-		this.requisicoesNumericas = requisicoesNumericas;
+	public void setDelegate(String delegate) {
+		this.delegate = delegate;
 	}
 
+	public String getInterfaces() {
+		return interfaces;
+	}
+
+	public void setInterfaces(String interfaces) {
+		this.interfaces = interfaces;
+	}
+
+	public String getNomeRepositorio() {
+		return nomeRepositorio;
+	}
+
+	public String getNomeCatalogo() {
+		return nomeCatalogo;
+	}
+
+	public String getAcao() {
+		return acao;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public String getPorta() {
+		return porta;
+	}
+
+	public String getIdentificadorDispotivo() {
+		return identificadorDispotivo;
+	}
+
+	public String getNomeIdentificadorAutenticacao() {
+		return nomeIdentificadorAutenticacao;
+	}
+
+	
 }

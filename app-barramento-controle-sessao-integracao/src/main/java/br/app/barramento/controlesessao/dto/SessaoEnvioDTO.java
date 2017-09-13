@@ -12,7 +12,8 @@ public class SessaoEnvioDTO implements Serializable {
 	private Long idetificadorAutenticacao;
 	private String nomeIdentificadorAutenticacao;
 	private String senha;
-	private String ipporta;
+	private String ip;
+	private String porta;
 	private String identificadorDispotivo;
 	private String brownser;
 	private Date datahora;
@@ -42,13 +43,6 @@ public class SessaoEnvioDTO implements Serializable {
 		this.senha = senha;
 	}
 
-	public String getIpporta() {
-		return ipporta;
-	}
-
-	public void setIpporta(String ipporta) {
-		this.ipporta = ipporta;
-	}
 
 	public String getIdentificadorDispotivo() {
 		return identificadorDispotivo;
@@ -81,5 +75,23 @@ public class SessaoEnvioDTO implements Serializable {
 	public void setTipoSessao(TipoSessao tipoSessao) {
 		this.tipoSessao = tipoSessao;
 	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getPorta() {
+		return porta;
+	}
+
+	public void setPorta(String porta) {
+		this.porta = porta;
+	}
+	
+	
 
 }

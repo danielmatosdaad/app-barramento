@@ -9,8 +9,6 @@ public class RespostaDTO implements DTO {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Class<?> tipo;
-
 	private DTO resultado;
 	private List<? extends DTO> listaResultado;
 
@@ -34,14 +32,6 @@ public class RespostaDTO implements DTO {
 
 	public void setResultado(DTO resultado) {
 		this.resultado = resultado;
-	}
-
-	public Class<?> getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Class<?> tipo) {
-		this.tipo = tipo;
 	}
 
 	public Mensagem getMensagem() {

@@ -2,7 +2,6 @@ package br.app.barramento.servico.imp;
 
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
@@ -17,10 +16,8 @@ import br.app.barramento.integracao.dto.RespostaDTO;
 import br.app.barramento.integracao.dto.TipoAcao;
 import br.app.barramento.integracao.exception.InfraEstruturaException;
 import br.app.barramento.integracao.exception.NegocioException;
-import br.app.catalago.api.RespositorioDelegate;
 import br.app.corporativo.integracao.api.IntegracaoDelegate;
-import br.app.corporativo.integracao.dto.UsuarioDTO;
-import br.app.corporativo.usuario.api.UsuarioDelegate;
+import br.app.repositorio.api.RespositorioDelegate;
 import br.app.repositorio.servico.integracao.IRepositorio;
 import br.app.repositorio.servico.integracao.IServicoRepositorio;
 
@@ -35,8 +32,6 @@ public class SessaoConexaoImp implements IConexaoRemote, IConexaoLocal {
 	private static final long serialVersionUID = 1L;
 
 	private ISessao sessao;
-
-	@PostConstruct
 	public void init() {
 		try {
 			Date dataHoraRequisicao = new Date();
@@ -55,12 +50,9 @@ public class SessaoConexaoImp implements IConexaoRemote, IConexaoLocal {
 			throw new NegocioException("informacoes invalida", new RuntimeException());
 		}
 
-		UsuarioDTO usuarioDTO = UsuarioDelegate.getInstancia()
-				.validaUsuarioSenha(sessaoEnvio.getNomeIdentificadorAutenticacao(), sessaoEnvio.getSenha());
-
 		IServicoRepositorio servicoRepositorio = RespositorioDelegate.getIntancia().getServico();
 		IRepositorio repositorioServico = servicoRepositorio.getRespositorio();
-		this.sessao = new SessaoUsuarioDTO(repositorioServico, sessaoEnvio, usuarioDTO, Long.valueOf(100000));
+		this.sessao = new SessaoUsuarioDTO(repositorioServico, sessaoEnvio, Long.valueOf(100000));
 		return this.sessao;
 	}
 
@@ -73,9 +65,13 @@ public class SessaoConexaoImp implements IConexaoRemote, IConexaoLocal {
 	}
 
 	@Override
-	public RespostaDTO executar(TipoAcao acao, EnvioDTO envio) throws NegocioException, InfraEstruturaException {
+	public RespostaDTO executar(TipoAcao acao, EnvioDTO envio, String nomeRepositorioArtefatoId,
+			String nomeCatalogoArtefatoId, String ip, String porta, String login, String senha)
+			throws NegocioException, InfraEstruturaException {
 
-		return IntegracaoDelegate.getInstancia().executar(acao, envio);
+		return IntegracaoDelegate
+				.getInstancia(nomeRepositorioArtefatoId, nomeCatalogoArtefatoId, ip, porta, login, senha)
+				.executar(acao, envio);
 	}
 
 }

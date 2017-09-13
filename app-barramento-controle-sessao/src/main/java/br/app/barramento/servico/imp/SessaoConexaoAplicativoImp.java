@@ -13,16 +13,19 @@ import br.app.barramento.controlesessao.interfaces.IConexaoLocal;
 import br.app.barramento.controlesessao.interfaces.IConexaoRemote;
 import br.app.barramento.controlesessao.interfaces.ISessao;
 import br.app.barramento.integracao.dto.EnvioDTO;
+import br.app.barramento.integracao.dto.IServiceIntegracao;
+import br.app.barramento.integracao.dto.LocalizadorServico;
 import br.app.barramento.integracao.dto.RespostaDTO;
 import br.app.barramento.integracao.dto.TipoAcao;
 import br.app.barramento.integracao.exception.InfraEstruturaException;
 import br.app.barramento.integracao.exception.NegocioException;
-import br.app.catalago.api.RespositorioDelegate;
 import br.app.corporativo.integracao.api.IntegracaoDelegate;
+import br.app.repositorio.api.RespositorioDelegate;
+import br.app.repositorio.servico.integracao.CatalogoServico;
 import br.app.repositorio.servico.integracao.IRepositorio;
 import br.app.repositorio.servico.integracao.IServicoRepositorio;
-import br.app.servico.infra.apl.api.AplicativoDelegate;
-import br.app.servico.infra.integracao.dto.AplicativoDTO;
+import br.app.repositorio.servico.integracao.InformacaoServico;
+import br.app.repositorio.servico.integracao.RepositorioServico;
 
 @Stateless
 @Remote(value = IConexaoRemote.class)
@@ -33,8 +36,6 @@ public class SessaoConexaoAplicativoImp implements IConexaoRemote, IConexaoLocal
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private ISessao sessao;
 
 	@PostConstruct
 	public void init() {
@@ -55,13 +56,9 @@ public class SessaoConexaoAplicativoImp implements IConexaoRemote, IConexaoLocal
 			throw new NegocioException("informacoes invalida", new RuntimeException());
 		}
 
-		AplicativoDTO aplicativoDTO = AplicativoDelegate.getInstancia()
-				.validaAplicativo(sessaoEnvio.getNomeIdentificadorAutenticacao(), sessaoEnvio.getSenha());
-
 		IServicoRepositorio servicoRepositorio = RespositorioDelegate.getIntancia().getServico();
 		IRepositorio repositorioServico = servicoRepositorio.getRespositorio();
-		this.sessao = new SessaoAplicativoDTO(repositorioServico, sessaoEnvio, aplicativoDTO, Long.valueOf(100000));
-		return this.sessao;
+		return new SessaoAplicativoDTO(repositorioServico, sessaoEnvio, Long.valueOf(100000));
 	}
 
 	@Override
@@ -73,9 +70,15 @@ public class SessaoConexaoAplicativoImp implements IConexaoRemote, IConexaoLocal
 	}
 
 	@Override
-	public RespostaDTO executar(TipoAcao acao, EnvioDTO envio) throws NegocioException, InfraEstruturaException {
-
-		return IntegracaoDelegate.getInstancia().executar(acao, envio);
+	public RespostaDTO executar(TipoAcao acao, EnvioDTO envio, String nomeRepositorioArtefatoId,
+			String nomeCatalogoArtefatoId, String ip, String porta, String login, String senha)
+			throws NegocioException, InfraEstruturaException {
+		IServiceIntegracao servico = IntegracaoDelegate
+				.getInstancia(nomeRepositorioArtefatoId, nomeCatalogoArtefatoId, ip, porta, login, senha).getServico();
+		if (servico == null) {
+			throw new NegocioException("nao foi possivel localizar o servico", new RuntimeException());
+		}
+		return servico.executar(acao, envio);
 	}
 
 }
