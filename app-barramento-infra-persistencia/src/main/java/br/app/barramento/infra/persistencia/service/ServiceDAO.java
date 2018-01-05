@@ -46,10 +46,9 @@ public class ServiceDAO {
 
 	}
 
-	public <T extends DTO, E extends Entidade> void removerPorId(IFacedeDAO<E> facedeDAO, Long id)
+	public static <T extends DTO, E extends Entidade> void removerPorId(IFacedeDAO<E> facedeDAO, Long id)
 			throws InfraEstruturaException, NegocioException {
-		// TODO Auto-generated method stub
-
+		facedeDAO.removerPorId(id);
 	}
 
 	public static <T extends DTO, E extends Entidade> List bustarTodos(IFacedeDAO<E> facedeDAO, Class<T> classeDTO)

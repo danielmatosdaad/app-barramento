@@ -53,6 +53,9 @@ public class SessaoConexaoImp implements IConexaoRemote, IConexaoLocal {
 		IServicoRepositorio servicoRepositorio = RespositorioDelegate.getIntancia().getServico();
 		IRepositorio repositorioServico = servicoRepositorio.getRespositorio();
 		this.sessao = new SessaoUsuarioDTO(repositorioServico, sessaoEnvio, Long.valueOf(100000));
+		
+		
+
 		return this.sessao;
 	}
 

@@ -7,25 +7,25 @@ public class EnvioDTO implements DTO {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 
-	private final String tokenAutenticacao;
-	private final String tokenAutorizacao;
-	private final String nomeIdentificadorAutenticacao;
-	private final String ip;
-	private final String porta;
-	private final String identificadorDispotivo;
-	private final String nomeRepositorio;
-	private final String nomeCatalogo;
-	private final String acao;
-	private final DTO requisicao;
-	private final List<DTO> requisicoes;
+	private String tokenAutenticacao;
+	private String tokenAutorizacao;
+	private String nomeIdentificadorAutenticacao;
+	private String ip;
+	private String porta;
+	private String identificadorDispotivo;
+	private String nomeRepositorio;
+	private String nomeCatalogo;
+	private String acao;
+	private DTO requisicao;
+	private List<DTO> requisicoes;
 	private String interfaces;
 	private String envio;
 	private String reposta;
 	private String delegate;
 
-	public EnvioDTO(final String tokenAutenticacao,final String tokenAutorizacao,final String nomeIdentificadorAutenticacao, final String ip, final String porta,
+	public EnvioDTO(final String tokenAutenticacao, final String tokenAutorizacao,
+			final String nomeIdentificadorAutenticacao, final String ip, final String porta,
 			final String identificadorDispotivo, final String nomeRepositorio, final String nomeCatalogo,
 			final String acao, final DTO requisicao, final List<DTO> requisicoes) {
 
@@ -44,6 +44,9 @@ public class EnvioDTO implements DTO {
 
 	}
 
+	public EnvioDTO() {
+	}
+
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
@@ -59,7 +62,6 @@ public class EnvioDTO implements DTO {
 	public DTO getRequisicao() {
 		return requisicao;
 	}
-
 
 	public List<DTO> getRequisicoes() {
 		return requisicoes;
@@ -133,5 +135,4 @@ public class EnvioDTO implements DTO {
 		return nomeIdentificadorAutenticacao;
 	}
 
-	
 }

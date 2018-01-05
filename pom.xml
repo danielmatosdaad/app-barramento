@@ -33,12 +33,13 @@
     <modules>
     <module>app-barramento-ear</module>
     <module>app-barramento-controle-sessao</module>
+     <module>app-barramento-controle-sessao-integracao</module>
     <module>app-barramento-api</module>
     <module>app-barramento-infra-persistencia</module>
-    <module>app-barramento-integracao-interfaces</module>
+    <module>app-barramento-integracao</module>
     <module>app-barramento-integracao-delegate</module>
     <module>app-barramento-integracao-ejb</module>
-    <module>app-barramento-controle-sessao-integracao</module>
+   
   </modules>
 
     <properties>
@@ -105,7 +106,7 @@
             <dependency>
             	<groupId>br.com.app.smart.business</groupId>
             	<artifactId>
-            		app-barramento-integracao-interfaces
+            		app-barramento-integracao
             	</artifactId>
             	<version>0.0.1-SNAPSHOT</version>
             </dependency>

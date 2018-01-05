@@ -3,6 +3,11 @@ package br.app.barramento.integracao.exception;
 public class InfraEstruturaException extends TransacaoException{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public InfraEstruturaException() {
 		// TODO Auto-generated constructor stub
 	}
